@@ -1,4 +1,39 @@
 #!/usr/bin/env php
-
 <?php
+namespace Quizlet;
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Commando\Command;
+use League\CLImate\CLImate;
+use Symfony\Component\Yaml\Yaml;
+
+$cmd = new Command();
+
+$cmd->beepOnError(false);
+
+$cmd->option('n')
+    ->aka('name')
+    ->required()
+    ->description('Имя пользователя');
+
+$cmd->option('e')
+    ->aka('email')
+    ->required()
+    ->description('Email пользователя')
+    ->must(function ($email) {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    });
+
+$cmd->option('f')
+    ->aka('file')
+    ->description('Путь до yml-файла с настройками опроса')
+    ->default(getcwd() . '/bin/example.yml')
+    ->file();
+
+$quiz = new Quiz(
+    $cmd,
+    new QuizYml(new Yaml(), $cmd['file']),
+    new CLImate()
+);
+exit($quiz->start());
