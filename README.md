@@ -2,6 +2,10 @@
 
 CLI-утилита для проведения опросов
 
+[![Code Climate](https://codeclimate.com/github/sabian/quizlet/badges/gpa.svg)](https://codeclimate.com/github/sabian/quizlet)
+[![Issue Count](https://codeclimate.com/github/sabian/quizlet/badges/issue_count.svg)](https://codeclimate.com/github/sabian/quizlet)
+[![Test Coverage](https://codeclimate.com/github/sabian/quizlet/badges/coverage.svg)](https://codeclimate.com/github/sabian/quizlet/coverage)
+
 ## Задание
 Необходимо реализовать cli утилиту для проведения квизов.
 
