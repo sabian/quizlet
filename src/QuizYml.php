@@ -55,10 +55,9 @@ class QuizYml implements QuizFile
     /**
      * Parse quiz file
      *
-     * @param bool $validate Validate parsed data. Default: true
      * @return bool
      */
-    public function parse(bool $validate = true): bool
+    public function parse(): bool
     {
         try {
             $this->data = $this->yml->parse(file_get_contents($this->path));
@@ -66,7 +65,7 @@ class QuizYml implements QuizFile
             return false;
         }
 
-        return $validate ? $this->isValid() : true;
+        return $this->isValid();
     }
 
     /**
